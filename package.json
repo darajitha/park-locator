@@ -4,7 +4,8 @@
   "description": "Parking Locator",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,9 @@
     "parking",
     "locaor"
   ],
+  "dependencies": {
+    "express": "^4.13.3"
+  },
   "author": "Rajitha Nirmana",
   "license": "MIT",
   "bugs": {
