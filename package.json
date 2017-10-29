@@ -1,0 +1,23 @@
+{
+  "name": "park-locator",
+  "version": "1.0.0",
+  "description": "Parking Locator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darajitha/park-locator.git"
+  },
+  "keywords": [
+    "parking",
+    "locaor"
+  ],
+  "author": "Rajitha Nirmana",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darajitha/park-locator/issues"
+  },
+  "homepage": "https://github.com/darajitha/park-locator#readme"
+}
