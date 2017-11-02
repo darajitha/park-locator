@@ -243,19 +243,19 @@
         <div id="about">
             <h2 class="Login Locator">Login Locator</h2>
 
-            <form action="/action_page.php">
+            <div >
                 <div class="imgcontainer">
                     <img src="img_avatar2.png" alt="Avatar" class="avatar">
                 </div>
 
                 <div class="container">
                     <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <input type="text" id="uname" placeholder="Enter Username" name="uname" required>
 
                     <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input type="password" id="password" placeholder="Enter Password" name="psw" required>
 
-                    <button type="submit"> Login</button>
+                    <button onclick="signIn()"> Login</button>
                     <input type="checkbox" checked="checked"> Remember me
                 </div>
 
@@ -263,7 +263,7 @@
                     <button type="button" class="cancelbtn">Cancel</button>
                     <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
-            </form>
+            </div>
         </div>
         <!-- End About -->
 
@@ -271,7 +271,7 @@
         <div id="products">
             <h3>Sing In Locator</h3>
 
-            <form action="/action_page.php" style="border:1px solid #ccc">
+            <form style="border:1px solid #ccc">
                 <div class="container">
                     <label><b>Name</b></label>
                     <input type="text" placeholder="Enter Name" name="email" required>
@@ -289,7 +289,7 @@
 
                     <div class="clearfix">
                         <button type="button" class="cancelbtn">Cancel</button>
-                        <button type="submit" class="signupbtn">Sign Up</button>
+                        <button type="submit" class="signupbtn" onclick="gotoLocator()">Sign Up</button>
                     </div>
                 </div>
             </form>
@@ -368,6 +368,23 @@
         <script src="js/components/swiper.min.js" type="text/javascript"></script>
         <script src="js/components/masonry.min.js" type="text/javascript"></script>
         <script src="js/components/google-map.min.js" type="text/javascript"></script>
+
+        <script>
+            function gotoLocator() {
+                window.open('/locator.html', '_self');
+            }
+
+            function signIn() {
+                var uName = document.getElementById('uname').value;
+                var password = document.getElementById('password').value;
+
+                if(uName === 'rajitha' && password === '123'){
+                    gotoLocator();
+                }else {
+                    alert('Wrong username or password')
+                }
+            }
+        </script>
 
     </body>
     <!-- END BODY -->
