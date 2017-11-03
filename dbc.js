@@ -1,1 +1,1 @@
-console.log("sdfsdf");
+var MongoClient = require('mongodb').MongoClient;
