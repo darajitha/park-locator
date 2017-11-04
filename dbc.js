@@ -1,1 +1,2 @@
-aaaaa
+var MongoClient = require('mongodb').MongoClient; 
+
