@@ -59,5 +59,9 @@ router.post("/slots", function (req, res) {
     })
 });
 
+router.post("/reserve", function (req, res) {
+    res.json({state:true, msg:'reserved'});
+});
+
 
 module.exports = router;

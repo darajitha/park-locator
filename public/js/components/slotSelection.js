@@ -34,11 +34,35 @@ ParkApp.slots = function () {
     function getSlotHtml(slots) {
         if (slots) {
             return slots.map(slot => {
-                return '<div>' + slot.title + '</div>';
+                return '<button class="button button5" onclick="ParkApp.slots.reserveSlot(\''+slot.title+'\')" >'+ slot.title +'</button>';
             });
         }else {
             return 'No slots found';
         }
+    }
+
+    function reserveSlot(slotTitle){
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify({
+                title: slotTitle
+            }),
+            contentType: 'application/json',
+            url: '/locations/reserve',
+            success: function (data) {
+                if (data.state) {
+                    console.log('success');
+                    var slotContainer = document.getElementById('slot-container');
+                    slotContainer.innerHTML = 'Slot reserved';
+                } else {
+                    alert(data.msg);
+                }
+                console.log(JSON.stringify(data));
+            },
+            error: function (err) {
+                alert('login error ' + err);
+            }
+        });
     }
 
     function getParameterByName(name, url) {
@@ -52,7 +76,8 @@ ParkApp.slots = function () {
     }
 
     return {
-        loadSlots: loadSlots
+        loadSlots: loadSlots,
+        reserveSlot: reserveSlot
     }
 }();
 

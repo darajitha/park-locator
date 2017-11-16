@@ -19,7 +19,7 @@ function signIn() {
                     if(data.state) {
                         console.log('success');
                         //console.log(window.open('/final/public/maplocation/HTML/location.html'));
-                        window.location.href ='/maplocation/HTML/location.html';
+                        window.location.href ='/locations.html';
                     }else{
                         alert(data.msg);
                     }

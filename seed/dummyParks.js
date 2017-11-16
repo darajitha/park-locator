@@ -30,6 +30,7 @@ const dummyParks = [
 
 module.exports = () => {
     Park.remove().exec();
+    Slot.remove().exec();
     dummyParks.forEach((park) => {
         park.save();
 

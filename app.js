@@ -29,11 +29,13 @@ if (connection){
 }else {
     console.log("database not  connected");
 }
+
+
+app.use(express.static(path.join(__dirname,"public")));
+app.set('views', __dirname + '/public');
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 app.set("view options", {layout: false});
-app.set('views', __dirname + '/public');
-app.use(express.static(path.join(__dirname,"public")));
 
 //seed db.
 const seed = require('./seed/dummyParks');
@@ -43,7 +45,7 @@ app.use('/user',user);
 app.use('/locations', location);
 
 app.get("/",function (req,res){
-    res.render('/Loging/HTML/index.html')
+    res.render('index.html')
 });
 
 
