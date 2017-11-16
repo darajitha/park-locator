@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Park = require('../models/park');
+const Slot = require('../models/slot');
 
 router.post("/all", function (req, res) {
     Park.find({}, function (err, parks) {
@@ -34,9 +35,27 @@ router.post("/slots", function (req, res) {
             });
             return false;
 
+        }else{
+            Slot.find()
+                .populate('lastReservedBy')
+                .select('title isReserved issReservePending')
+                .exec((err, slots) => {
+                    if (err) throw err;
+                    
+                    if (!slots) {
+                        res.json({
+                            state: false,
+                            msg: "No Slots found"
+                        });
+                        return false;
+                    }
+
+                    res.json({state:true, slots:slots});
+                    
+                });
         }
 
-        res.json({state:true, park:park.slots});
+        
     })
 });
 
