@@ -274,22 +274,22 @@
             <form style="border:1px solid #ccc">
                 <div class="container">
                     <label><b>Name</b></label>
-                    <input type="text" placeholder="Enter Name" name="email" required>
+                    <input type="text" id="uuname" placeholder="Enter Name" name="uuname" required>
 
                     <label><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required>
+                    <input type="text" id="uemail" placeholder="Enter Email" name="uemail" required>
 
                     <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <input type="password" id="upsw" placeholder="Enter Password" name="upsw" required>
 
                     <label><b>Repeat Password</b></label>
-                    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                    <input type="password" id="upsw-repeat" placeholder="Repeat Password" name="upsw-repeat" required>
                     <input type="checkbox" checked="checked"> Remember me
 
 
                     <div class="clearfix">
                         <button type="button" class="cancelbtn">Cancel</button>
-                        <button type="submit" class="signupbtn" onclick="gotoLocator()">Sign Up</button>
+                        <button type="submit" class="signupbtn" onclick="login()">Sing up</button>
                     </div>
                 </div>
             </form>
@@ -334,7 +334,7 @@
                         <img class="footer-logo" src="img/logo-dark.png" alt="Aitonepage Logo">
                     </div>
                     <div class="col-xs-6 text-right">
-                        <p class="margin-b-0"><a class="fweight-700" href="http://keenthemes.com/preview/aitonepage/"></a> Create  by: <a class="fweight-700" href="/">parking app</a></p>
+                        <p class="margin-b-0"><a class="fweight-700" href="http://keenthemes.com/preview/aitonepage/"></a> Create  by: <a class="fweight-700" href="http://www.keenthemes.com/">darajitha@gmail.com</a></p>
                     </div>
                 </div>
                 <!--// end row -->
@@ -369,9 +369,15 @@
         <script src="js/components/masonry.min.js" type="text/javascript"></script>
         <script src="js/components/google-map.min.js" type="text/javascript"></script>
 
-        <script>
+        <!--usersin-->
+
+        <script src="js/components/userlogin.js" type="text/javascript"></script>
+        <script src="js/components/index.js" type="text/javascript"></script>
+        <script src="js/components/userSing.js" type="text/javascript"></script>
+
+      <!--  <script>
             function gotoLocator() {
-                window.open('/maplocation/HTML/location.html', '_self');
+                window.open('/park-locator/maplocation/HTML/location.html', '_self');
             }
 
             function signIn() {
@@ -384,7 +390,12 @@
                     alert('Wrong username or password')
                 }
             }
-        </script>
+        </script> -->
+
+
+
+
+
 
     </body>
     <!-- END BODY -->
