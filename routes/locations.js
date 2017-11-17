@@ -36,7 +36,7 @@ router.post("/slots", function (req, res) {
             return false;
 
         }else{
-            Slot.getFreeSlots(park._id, (err, slots) => {
+            Slot.findByParkId(park._id, (err, slots) => {
                     if (err) throw err;
                     
                     if (!slots) {

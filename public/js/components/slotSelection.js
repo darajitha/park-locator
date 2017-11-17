@@ -1,3 +1,4 @@
+
 var ParkApp = ParkApp || {};
 
 ParkApp.slots = function () {
@@ -15,7 +16,9 @@ ParkApp.slots = function () {
                 if (data.state) {
                     console.log('success');
                     var slotContainer = document.getElementById('slot-container');
-                    slotContainer.innerHTML = getSlotHtml(title, data.slots);
+                    var slotContainerBooked = document.getElementById('slot-container-booked');
+                    slotContainer.innerHTML = getSlotHtml(title, data.slots.filter((slot) => { return !slot.isReserved && !slot.isReservePending;}));
+                    slotContainerBooked.innerHTML = getSlotHtml(title, data.slots.filter((slot) => { return slot.isReserved;}));
                 } else {
                     alert(data.msg);
                 }

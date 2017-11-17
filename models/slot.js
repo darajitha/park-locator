@@ -39,6 +39,13 @@ module.exports.findByTitle = function (title, callback) {
     Slot.findOne(query, callback);
 };
 
+module.exports.findByParkId = function (parkId, callback) {
+    const query = {
+        park: parkId
+    };
+    Slot.find(query, callback);
+};
+
 module.exports.getFreeSlots = function (id, callback) {
     const query = {
         $and: [{
@@ -51,7 +58,7 @@ module.exports.getFreeSlots = function (id, callback) {
             }]
         }]
     };
-    
+
     Slot.find(query).populate('lastReservedBy')
         .select('title isReserved isReservePending')
         .exec(callback);
