@@ -24,6 +24,9 @@ function  login() {
             //console.log(window.open('/final/public/maplocation/HTML/location.html'));
             alert('please login to continue');
             console.log(JSON.stringify(data));
+        },
+        error:function(err){
+            alert(err);
         }
     });
 
