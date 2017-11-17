@@ -45,3 +45,5 @@ ParkApp.book = function (content) {
         }
     });
 }
+
+ParkApp.reserve();
