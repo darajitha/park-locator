@@ -6,7 +6,6 @@ function signIn() {
     var data = {};
     data.email = document.getElementById('uname').value;
     data.password = document.getElementById('password').value;
-    alert(JSON.stringify(data));
     $.ajax({
         type: 'POST',
         data: JSON.stringify(data),
