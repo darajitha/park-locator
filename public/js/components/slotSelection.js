@@ -17,8 +17,10 @@ ParkApp.slots = function () {
                     console.log('success');
                     var slotContainer = document.getElementById('slot-container');
                     var slotContainerBooked = document.getElementById('slot-container-booked');
+                    var slotContainerPending = document.getElementById('slot-container-pending');
                     slotContainer.innerHTML = getSlotHtml(title, data.slots.filter((slot) => { return !slot.isReserved && !slot.isReservePending;}));
                     slotContainerBooked.innerHTML = getSlotHtml(title, data.slots.filter((slot) => { return slot.isReserved;}));
+                    slotContainerPending.innerHTML = getSlotHtml(title, data.slots.filter((slot) => { return !slot.isReserved && slot.isReservePending;}));
                 } else {
                     alert(data.msg);
                 }
