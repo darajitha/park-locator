@@ -1,4 +1,4 @@
-function  login() {
+function login() {
 
     var uName = document.getElementById('uuname').value;
     var uEmail = document.getElementById('uemail').value;
@@ -9,7 +9,7 @@ function  login() {
 
 
     var data = {};
-    data.username=uName;
+    data.username = uName;
     data.email = uEmail;
     data.password = password;
     data.passwordrepeat = passwordrepeat;
@@ -21,11 +21,14 @@ function  login() {
         url: '/user/register',
         success: function (data) {
             console.log('success');
-            //console.log(window.open('/final/public/maplocation/HTML/location.html'));
-            alert('please login to continue');
+            if (data.state) {
+                alert('please login to continue');
+            } else {
+                alert(data.msg);
+            }
             console.log(JSON.stringify(data));
         },
-        error:function(err){
+        error: function (err) {
             alert(err);
         }
     });
