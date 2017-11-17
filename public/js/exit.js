@@ -29,7 +29,7 @@ ParkApp.book = function (content) {
         type: 'POST',
         contentType: 'application/json',
         data:JSON.stringify({slot:id}),
-        url: '/locations/lock',
+        url: '/locations/unlock',
         success: function (data) {
             if (data.state) {
                 console.log('success');

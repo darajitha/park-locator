@@ -84,6 +84,63 @@ router.post("/reserve", function (req, res) {
     
 });
 
+router.post("/lock", function (req, res) {
+    
+        const slotId = req.body.slot;
+        Slot.findOne({_id:slotId})
+        .populate('lastReservedBy')
+        .select('title isReserved isReservePending')
+        .exec((err, slot) => {
+            if (err) throw err;
+            
+            if (!slot) {
+                res.json({
+                    state: false,
+                    msg: "No Slots found"
+                });
+                return false;
+            }
+    
+            slot.isReserved = true;
+    
+            slot.save(function (err, slot) {
+                if (err) throw err;
+                res.json({state:true, slot:slot});
+            });        
+            
+        });
+        
+    });
+
+    router.post("/unlock", function (req, res) {
+        
+            const slotId = req.body.slot;
+            Slot.findOne({_id:slotId})
+            .populate('lastReservedBy')
+            .select('title isReserved isReservePending')
+            .exec((err, slot) => {
+                if (err) throw err;
+                
+                if (!slot) {
+                    res.json({
+                        state: false,
+                        msg: "No Slots found"
+                    });
+                    return false;
+                }
+        
+                slot.isReservePending = false;
+                slot.isReserved = false;
+        
+                slot.save(function (err, slot) {
+                    if (err) throw err;
+                    res.json({state:true, slot:slot});
+                });        
+                
+            });
+            
+        });
+
 router.post("/slot", function (req, res) {
     
         const slotId = req.body.slot;
