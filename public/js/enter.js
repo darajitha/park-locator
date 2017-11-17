@@ -11,8 +11,8 @@ ParkApp.reserve = function () {
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
                 var cameraSelect = document.getElementById('cameras');
-               
-                scanner.start(cameras[cameras.length -1]);
+
+                scanner.start(cameras[cameras.length - 1]);
             } else {
                 console.error('No cameras found.');
             }
@@ -24,11 +24,14 @@ ParkApp.reserve = function () {
 
 ParkApp.book = function (content) {
     var idIndex = content.indexOf('slot:');
-    var id = content.substring(idIndex, content.length);
+    var id = content.substring(idIndex + 'slot:'.length + 1, content.length - 1);
+    
     $.ajax({
         type: 'POST',
         contentType: 'application/json',
-        data:JSON.stringify({slot:id}),
+        data: JSON.stringify({
+            slot: id
+        }),
         url: '/locations/lock',
         success: function (data) {
             if (data.state) {

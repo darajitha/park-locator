@@ -24,7 +24,8 @@ ParkApp.reserve = function () {
 
 ParkApp.book = function (content) {
     var idIndex = content.indexOf('slot:');
-    var id = content.substring(idIndex, content.length);
+    var id = content.substring(idIndex + 'slot:'.length + 1, content.length - 1);
+    
     $.ajax({
         type: 'POST',
         contentType: 'application/json',
