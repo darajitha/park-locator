@@ -38,7 +38,7 @@ router.post("/slots", function (req, res) {
         }else{
             Slot.find({park:park._id})
                 .populate('lastReservedBy')
-                .select('title isReserved issReservePending')
+                .select('title isReserved isReservePending')
                 .exec((err, slots) => {
                     if (err) throw err;
                     
@@ -60,8 +60,57 @@ router.post("/slots", function (req, res) {
 });
 
 router.post("/reserve", function (req, res) {
-    res.json({state:true, msg:'reserved'});
+
+    const slotId = req.body.slot;
+    Slot.findOne({_id:slotId})
+    .populate('lastReservedBy')
+    .select('title isReserved isReservePending')
+    .exec((err, slot) => {
+        if (err) throw err;
+        
+        if (!slot) {
+            res.json({
+                state: false,
+                msg: "No Slots found"
+            });
+            return false;
+        }
+
+        slot.isReservePending = true;
+
+        slot.save(function (err, slot) {
+            if (err) throw err;
+            res.json({state:true, slot:slot});
+        });        
+        
+    });
+    
 });
+
+router.post("/slot", function (req, res) {
+    
+        const slotId = req.body.slot;
+        Slot.findOne({_id:slotId})
+        .populate('lastReservedBy')
+        .select('title isReserved isReservePending')
+        .exec((err, slot) => {
+            if (err) throw err;
+            
+            if (!slot) {
+                res.json({
+                    state: false,
+                    msg: "No Slots found"
+                });
+                return false;
+            }
+    
+            
+            res.json({state:true, slot:slot});
+                   
+            
+        });
+        
+    });
 
 
 module.exports = router;

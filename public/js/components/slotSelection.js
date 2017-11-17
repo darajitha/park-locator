@@ -34,7 +34,7 @@ ParkApp.slots = function () {
     function getSlotHtml(title, slots) {
         if (slots) {
             return slots.map(slot => {
-                return '<button class="button button5" onclick="ParkApp.slots.reserveSlot(\''+title+'\', \'' +slot.title + '\')" >'+ slot.title +'</button>';
+                return '<button class="button button5" onclick="ParkApp.slots.reserveSlot(\''+title+'\', \'' +slot._id + '\')" >'+ slot.title +'</button>';
             });
         }else {
             return 'No slots found';
@@ -45,14 +45,14 @@ ParkApp.slots = function () {
         $.ajax({
             type: 'POST',
             data: JSON.stringify({
-                title: slot
+                slot: slot
             }),
             contentType: 'application/json',
             url: '/locations/reserve',
             success: function (data) {
                 if (data.state) {
                     console.log('success');
-                    window.location.href='/reserved.html?park='+park+ '&slot='+slot;
+                    window.location.href='/reserved.html?id='+slot;
                 } else {
                     alert(data.msg);
                 }

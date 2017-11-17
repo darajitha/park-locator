@@ -35,9 +35,9 @@ module.exports = () => {
         park.save();
 
         const dummySlots = [
-            new Slot({title: park.title + ' slot 1', isReserved: false, issReservePending:false, park: park._id}),
-            new Slot({title: park.title + ' slot 2', isReserved: false, issReservePending:false, park: park._id}),
-            new Slot({title: park.title + ' slot 2', isReserved: false, issReservePending:false, park: park._id}),
+            new Slot({title: park.title + ' slot 1', isReserved: false, isReservePending:false, park: park._id}),
+            new Slot({title: park.title + ' slot 2', isReserved: false, isReservePending:false, park: park._id}),
+            new Slot({title: park.title + ' slot 2', isReserved: false, isReservePending:false, park: park._id}),
         ];
 
         dummySlots.forEach(slot => slot.save());

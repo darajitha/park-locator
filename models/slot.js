@@ -10,7 +10,7 @@ const slotSchema = new schema({
     park: {type: mongoose.Schema.Types.ObjectId, ref: 'Park', required: true},
     lastReservedBy:{type: mongoose.Schema.Types.ObjectId, ref: 'User', required:false},
     isReserved:{type:Boolean,required:true},
-    issReservePending: {type:Boolean,required:true},
+    isReservePending: {type:Boolean,required:true},
 });
 
 const Slot = module.exports = mongoose.model("Slot",slotSchema);

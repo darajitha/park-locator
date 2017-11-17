@@ -4,13 +4,29 @@
   var ParkApp = ParkApp || {};
 
   ParkApp.initReserved = function () {
-      var park = ParkApp.getParameterByName('park');
-      var slot = ParkApp.getParameterByName('slot');
-
-      jQuery('#qrcodeTable').qrcode({
-          render: "table",
-          text: 'park:' + park + '|slot:' + slot
+      var slot = ParkApp.getParameterByName('id');
+      $.ajax({
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({slot:slot}),
+          url: 'locations/slot',
+          success: function (data) {
+              if (data.state) {
+                  console.log('success');
+                  jQuery('#qrcodeTable').qrcode({
+                    render: "table",
+                    text: 'Reserved|slot:' + JSON.stringify(slot)
+                });
+              } else {
+                  alert(data.msg);
+              }
+              console.log(JSON.stringify(data));
+          },
+          error: function (err) {
+              alert('login error ' + err);
+          }
       });
+      
 
   };
 
