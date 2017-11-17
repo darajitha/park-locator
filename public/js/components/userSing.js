@@ -13,7 +13,7 @@ function  login() {
     data.email = uEmail;
     data.password = password;
     data.passwordrepeat = passwordrepeat;
-
+    alert(JSON.stringify(data));
     $.ajax({
         type: 'POST',
         data: JSON.stringify(data),
