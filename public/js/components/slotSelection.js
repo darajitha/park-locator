@@ -15,7 +15,7 @@ ParkApp.slots = function () {
                 if (data.state) {
                     console.log('success');
                     var slotContainer = document.getElementById('slot-container');
-                    slotContainer.innerHTML = getSlotHtml(data.slots);
+                    slotContainer.innerHTML = getSlotHtml(title, data.slots);
                 } else {
                     alert(data.msg);
                 }
@@ -31,29 +31,28 @@ ParkApp.slots = function () {
      * 
      * @param {*} slots 
      */
-    function getSlotHtml(slots) {
+    function getSlotHtml(title, slots) {
         if (slots) {
             return slots.map(slot => {
-                return '<button class="button button5" onclick="ParkApp.slots.reserveSlot(\''+slot.title+'\')" >'+ slot.title +'</button>';
+                return '<button class="button button5" onclick="ParkApp.slots.reserveSlot(\''+title+'\', \'' +slot.title + '\')" >'+ slot.title +'</button>';
             });
         }else {
             return 'No slots found';
         }
     }
 
-    function reserveSlot(slotTitle){
+    function reserveSlot(park, slot){
         $.ajax({
             type: 'POST',
             data: JSON.stringify({
-                title: slotTitle
+                title: slot
             }),
             contentType: 'application/json',
             url: '/locations/reserve',
             success: function (data) {
                 if (data.state) {
                     console.log('success');
-                    var slotContainer = document.getElementById('slot-container');
-                    slotContainer.innerHTML = 'Slot reserved';
+                    window.location.href='/reserved.html?park='+park+ '&slot='+slot;
                 } else {
                     alert(data.msg);
                 }

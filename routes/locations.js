@@ -36,7 +36,7 @@ router.post("/slots", function (req, res) {
             return false;
 
         }else{
-            Slot.find()
+            Slot.find({park:park._id})
                 .populate('lastReservedBy')
                 .select('title isReserved issReservePending')
                 .exec((err, slots) => {
