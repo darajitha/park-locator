@@ -35,7 +35,7 @@ ParkApp.book = function (content) {
                 console.log('success');
                 alert('location booked');
             } else {
-                alert(data.msg);
+                alert(JSON.stringify(data.msg));
             }
             console.log(JSON.stringify(data));
         },
