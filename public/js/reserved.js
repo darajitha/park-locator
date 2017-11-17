@@ -23,7 +23,7 @@
               console.log(JSON.stringify(data));
           },
           error: function (err) {
-              alert('login error ' + err);
+            alert('login error ' + json.stringify(err));
           }
       });
       
