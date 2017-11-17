@@ -24,7 +24,7 @@ ParkApp.reserve = function () {
 
 ParkApp.book = function (content) {
     var idIndex = content.indexOf('slot:');
-    var id = content.substring(idIndex + 'slot:'.length + 1, content.length - 1);
+    var id = content.substring(idIndex + 'slot:'.length, content.length);
     
     $.ajax({
         type: 'POST',
@@ -34,7 +34,7 @@ ParkApp.book = function (content) {
         success: function (data) {
             if (data.state) {
                 console.log('success');
-                alert('location booked');
+                alert('location unbooked');
             } else {
                 alert(JSON.stringify(data.msg));
             }
@@ -45,5 +45,3 @@ ParkApp.book = function (content) {
         }
     });
 }
-
-ParkApp.reserve();

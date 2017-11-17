@@ -15,7 +15,7 @@
                   console.log('success');
                   jQuery('#qrcodeTable').qrcode({
                     render: "table",
-                    text: 'Reserved|slot:' + JSON.stringify(slot)
+                    text: 'Reserved|slot:' +slot
                 });
               } else {
                   alert(data.msg);
